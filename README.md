@@ -1,23 +1,29 @@
-# Assets
+# truffle-init-webpack
+Example webpack project with Truffle. Includes contracts, migrations, tests, user interface and webpack build pipeline.
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+## Usage
 
-## Motivation
+To initialize a project with this exapmple, run `truffle init webpack` inside an empty directory.
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+## Building and the frontend
 
-## Installation
+1. First run `truffle compile`, then run `truffle migrate` to deploy the contracts onto your network of choice (default "development").
+1. Then run `npm run dev` to build the app and serve it on http://localhost:8080
 
-Provide code examples and explanations of how to get the project.
+## Possible upgrades
 
-## API Reference
+* Use the webpack hotloader to sense when contracts or javascript have been recompiled and rebuild the application. Contributions welcome!
 
-List API References and external sources here.
+## Common Errors
 
-## Contributors
+* **Error: Can't resolve '../build/contracts/MetaCoin.json'**
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+This means you haven't compiled or migrated your contracts yet. Run `truffle compile` and `truffle migrate` first.
 
-## License
+Full error:
 
-A short snippet describing the license (MIT, Apache, etc.)
+```
+ERROR in ./app/main.js
+Module not found: Error: Can't resolve '../build/contracts/MetaCoin.json' in '/Users/tim/Documents/workspace/Consensys/test3/app'
+ @ ./app/main.js 11:16-59
+```
